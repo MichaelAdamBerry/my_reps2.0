@@ -1,12 +1,17 @@
 import Link from "next/router";
-export default props => {
-  const { src, col, row, zIndex, route } = props;
+import { withRouter } from "next/router";
+function HomeCardImg(props) {
+  const { src, zIndex, alt } = props;
   const styles = {
     boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.5)",
-    gridColumn: col,
-    gridRow: row,
     opacity: 0.85,
     zIndex: zIndex
   };
-  return <img src={src} style={styles} />;
+  return <img style={styles} src={src} alt={alt} />;
+}
+
+HomeCardImg.defaultProps = {
+  zIndex: 1
 };
+
+export default HomeCardImg;

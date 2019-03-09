@@ -4,10 +4,10 @@ const layoutStyle = {
 
 const Layout = props => (
   <>
-    <div class="main" style={layoutStyle}>
+    <div className="main" style={layoutStyle}>
       {props.children}
     </div>
-    <style global>
+    <style global="true">
       {`html {
           color: rgba(12, 12, 10, 0.8);
           line-height: 1.3;
