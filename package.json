@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js",
+    "now-build": "next build",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start -p 8000"
   },
   "keywords": [],
   "author": "Michael Adam Berry <MichaelAdamBerry3@gmail.com>",
