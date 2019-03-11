@@ -1,4 +1,5 @@
 import { fetchData } from "../api/districtSearch";
+
 import {
   getCurrentHouseMember,
   getCurrentSenateMembers,
@@ -13,7 +14,7 @@ const Find = props => {
       <p>{data.name}</p>
       {repArr.map(repObj => {
         if (repObj.first_name && repObj.last_name) {
-          return <p>{`${repObj.first_name} ${repObj.last_name}`}</p>;
+          return <Rep repObj={repObj} />;
         }
       })}
     </div>
