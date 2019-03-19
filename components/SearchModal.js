@@ -138,7 +138,7 @@ export default class Search extends React.Component {
           <div className="closeBtn" onClick={modalClose}>
             <FontAwesomeIcon
               icon={faTimesCircle}
-              style={{ height: "60px", width: "60px" }}
+              style={{ height: "40px", width: "40px", cursor: "pointer" }}
             />
           </div>
           <h3 className="lead bold">Enter your address to find your reps</h3>
@@ -153,9 +153,11 @@ export default class Search extends React.Component {
         </div>
         <style jsx>{`
           .closeBtn {
-            grid-column: 4;
             cursor: pointer;
+            position: fixed;
             font-size: larger;
+            top: 20px;
+            right: 20px;
           }
 
           .lead {
@@ -208,8 +210,12 @@ export default class Search extends React.Component {
             }
 
             .closeBtn svg {
-              height: 40px;
-              width: 40px;
+              display: block;
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              color: white;
+              z-index: 1;
             }
           }
         `}</style>
