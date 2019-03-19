@@ -126,3 +126,13 @@ export async function getBillSubject(congress, bill_id) {
     console.log(err);
   }
 }
+
+export function firstElected({ roles }) {
+  const chamber = roles[0].chamber;
+  const found = roles.find(role => {
+    role.chamber == !chamber;
+  });
+  const servedSince =
+    found === undefined ? roles[roles.length - 1].start_date : found.start_date;
+  return servedSince;
+}

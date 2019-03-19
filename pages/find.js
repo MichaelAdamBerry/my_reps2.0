@@ -1,23 +1,189 @@
 import { fetchData } from "../api/districtSearch";
-
+import Layout from "../components/MyLayout";
 import {
   getCurrentHouseMember,
   getCurrentSenateMembers,
   getSpecificSenateMembers
 } from "../api/repSearch";
 import Rep from "../components/Rep";
+import Footer from "../components/Footer";
+import { Spring, config } from "react-spring";
 
 const Find = props => {
   const { data, repArr } = props;
+  const district = data.name.split(" ").join(" ");
   return (
-    <div>
-      <p>{data.name}</p>
-      {repArr.map(repObj => {
-        if (repObj.first_name && repObj.last_name) {
-          return <Rep repObj={repObj} />;
-        }
-      })}
-    </div>
+    <Layout>
+      <Spring
+        from={{ marginTop: "800px", opacity: ".5" }}
+        to={{ marginTop: "none", opacity: ".9" }}
+        config={config.gentle}>
+        {({ marginTop, opacity }) => (
+          <>
+            <div className="container">
+              <div className="header bold">
+                <span className="header-text">Find My Reps</span>
+              </div>
+              <div className="district bold">
+                <h1>{district}</h1>
+              </div>
+              <div className="mobile-district bold">
+                <h3>{district}</h3>
+              </div>
+              <div className="card-one">
+                <Rep repObj={repArr[0]} order="one" />
+              </div>
+              <div className="card-two">
+                <Rep repObj={repArr[1]} order="two" />
+              </div>
+              <div className="card-three">
+                <Rep repObj={repArr[2]} order="three" />
+              </div>
+              <div className="action">
+                <a
+                  href="https://projects.propublica.org/graphics/users-guide-to-democracy"
+                  className="action bold">
+                  <h3>Take Action!</h3>
+                </a>
+              </div>
+            </div>
+            <Footer />
+            <style jsx>{`
+              .container {
+                margin: 0;
+                width: 100vw;
+                background: #dfd7d0;
+                display: grid;
+                grid-column-gap: 4em;
+                grid-row-gap: 1.5em;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                grid-template-rows: 50px 1fr 1fr 1fr 1fr;
+              }
+
+              .header-text {
+                color: white;
+                text-align: left;
+                margin-left: 3em;
+                font-size: 17px;
+                padding: 0.5em;
+                font-size: 17px;
+                display: flex;
+              }
+
+              .header span {
+                z-index: 1;
+                background-color: red;
+              }
+
+              .mobile-district {
+                display: none;
+              }
+              .district {
+                grid-row: 2/6;
+                grid-column: 1/2;
+                width: 150px;
+                margin-top: 3em;
+                text-align: -webkit-center;
+              }
+              .district h1 {
+                -webkit-writing-mode: vertical-rl;
+                -ms-writing-mode: tb-rl;
+                writing-mode: vertical-rl;
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+                text-align: after;
+                white-space: nowrap;
+                color: #2f2f2f;
+                margin-top: ${marginTop};
+                opacity: ${opacity};
+              }
+
+              .header {
+                color: #eae4df;
+                display: flex;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                margin: 0;
+                width: 100%;
+                background-color: #2f2f2f;
+                grid-row: 1/2;
+                grid-column: 1 /6;
+                height: 50px;
+                justify-self: stretch;
+                border-bottom: solid 5px #a38c78;
+              }
+              .card-one {
+                grid-column: 2 / 3;
+                grid-row: 2 / 4;
+                width: 500px;
+                max-height: 250px;
+                min-height: 250px;
+              }
+              .card-two {
+                grid-column: 2 / 3;
+                grid-row: 4 / 6;
+                width: 500px;
+                min-height: 250px;
+                max-height: 250px;
+
+                align-self: baseline;
+              }
+
+              .card-three {
+                grid-column: 3 / 4;
+                grid-row: 2 / 5;
+
+                max-height: 400px;
+                min-height: 400px;
+                max-width: 300px;
+                justify-self: baseline;
+              }
+              .bold {
+                font-family: "Roboto", sans-serif;
+              }
+              .action {
+                cursor: pointer;
+                color: white;
+                grid-column: 3/4;
+                background-color: #2f2f2f;
+                min-height: 100px;
+                max-height: 100px;
+                text-align: center;
+                align-self: end;
+              }
+              @media (min-width: 320px) and (max-width: 600px) {
+                .container {
+                  display: block;
+                }
+                .card-one,
+                .card-two,
+                .card-three {
+                  margin: auto;
+                }
+
+                .mobile-district {
+                  display: block;
+                  text-align: center;
+                }
+
+                .district {
+                  display: none;
+                }
+
+                .card-one,
+                .card-two {
+                  margin-top: 3em;
+                  max-height: 450px;
+                  min-height: 450px;
+                  max-width: 300px;
+                }
+              }
+            `}</style>
+          </>
+        )}
+      </Spring>
+    </Layout>
   );
 };
 

@@ -1,14 +1,14 @@
 export default ({ text, name }) => {
   return (
-    <div className={name}>
+    <div className={`${name} bold`}>
       <h1>{text}</h1>
       <style jsx>
         {`
         h1 {
-            font-size: 4em; 
+            font-size: 3em; 
             margin: 0:
             line-height: 1em;
-            color: #3ac3f9;
+            color: #2f2f2f;
         };
 
         .mainTitle {
