@@ -56,16 +56,16 @@ export default props => {
         .footer {
           font-family: "Noto Serif TC", serif;
           width: 100%;
-          background-color: #2f2f2f;
+          background-color: var(--dark-blue);
           display: grid;
           row-gap: 20px;
           min-height: 188px;
           justify-content: space-around;
           padding: 50px 0;
           margin-top: 3em;
-          grid-template-columns: .5fr 1fr 1fr 1fr .5fr;
+          grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
           grid-template-rows: 1fr 40px;
-          border-top: solid 5px #a38c78;
+          border-top: solid 5px var(--red-accent);
         }
 
         .footer li {
@@ -78,7 +78,7 @@ export default props => {
 
         a {
           font-size: smaller;
-          color: white;
+          color: var(--site-white);
           text-decoration-style: none;
         }
 
@@ -99,41 +99,37 @@ export default props => {
           grid-row: 1;
         }
         .quote {
-            grid-column: 2/5; 
-            grid-row: 2;
-            justify-self: center;
-            color: lightgray;
-            font-size: 12px;
-            font-style: italic;
+          grid-column: 2/5;
+          grid-row: 2;
+          justify-self: center;
+          color: var(--site-white);
+          font-size: 12px;
+          font-style: italic;
         }
 
         a button {
-        margin-left:75px;
-        font-size: large;
-        height: 45px;
-        width: 150px;
-        background-color: #ffffff
-        color: black;
-        cursor: pointer;
+          margin-left: 75px;
+          font-size: large;
+          height: 45px;
+          width: 150px;
+          background-color: var(--red-accent);
+          color: black;
+          cursor: pointer;
         }
 
         .subHeader {
-          color: white;
+          color: var(--site-white);
         }
 
         @media (min-width: 320px) and (max-width: 500px) {
-            .footer {
-                display: block;
-                margin: auto;
-            }
-            .footer > div {
-                margin-left: 2em;
-            }
-
-            
-            
-            
+          .footer {
+            display: block;
+            margin: auto;
           }
+          .footer > div {
+            margin-left: 2em;
+          }
+        }
       `}</style>
     </div>
   );

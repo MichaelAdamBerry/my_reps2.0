@@ -126,6 +126,9 @@ class Index extends React.Component {
             </div>
             <Footer />
             <style jsx>{`
+
+          
+   
           .search-btn {
             grid-column: 5;
             justify-self: start;
@@ -140,6 +143,7 @@ class Index extends React.Component {
             grid-gap: 30px; 
             width: 100%;
             cursor: pointer;
+            color: var(--main-blue);
             grid-template-columns: 1fr 1fr 200px 200px 150px 1fr 1fr;
           }
 
@@ -183,11 +187,12 @@ class Index extends React.Component {
             padding-bottom: 10px;
             padding-right: 1em;
             padding-left: 1em;
+            color: var(--site-black);
           }
 
           .info p {
             font-style: italic;
-            color: #8c8b8b;
+            color: var(--light-blue);
             line-height: 1.5em;
             padding-left: 1.5em;
             padding-right: 1.5em;
@@ -215,13 +220,14 @@ class Index extends React.Component {
             flex-direction: column;
             justify-content: center;
             margin-right: 3em;
+            color: var(--main-blue);
           }
 
           .line-title {
             font-size: larger;
             color: white;
             transform: rotate(270deg);
-            background-color: #e42c3e;
+            background-color: var(--red-accent);
             white-space: nowrap;
             padding: 0 1em 0 1em;
           }
@@ -229,7 +235,7 @@ class Index extends React.Component {
           .two {
             grid-column: 3 /5;
             grid-row: 3 / 5;
-            background-color: #a38c78;
+            background-color: var(--main-blue);
             z-index: 1;
             opacity: .8;
             display: flex;
@@ -264,9 +270,9 @@ class Index extends React.Component {
             grid-row: 4 / 6;
             z-index: 1;
             opacity: .9;
-            background-color: #ffffff8c;
+            background-color: var(--red-accent);
+            color: var(--site-black);
             box-shadow: 5px 5px 20px grey;
-            color: #2f2f2f;
             display: flex; 
             flex-direction: column;
             justify-content: center;
@@ -279,7 +285,7 @@ class Index extends React.Component {
             justify-content: space-around;
             font-size: 13px;
             font-style: italic;
-            color: gray;
+            color: var(--site-white);
           }
           .attributions p{
             margin-block-start: 3px; 

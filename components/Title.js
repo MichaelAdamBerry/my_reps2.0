@@ -8,7 +8,7 @@ export default ({ text, name }) => {
             font-size: 3em; 
             margin: 0:
             line-height: 1em;
-            color: #2f2f2f;
+            color: var(--site-white);
         };
 
         .mainTitle {

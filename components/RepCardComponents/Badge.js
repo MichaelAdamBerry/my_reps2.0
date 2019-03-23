@@ -1,15 +1,20 @@
-export default ({ title, row }) => {
-  return (
-    <>
-      <div className="badge bold">
-        <h3>{title}</h3>
-      </div>
-      <style>{`
+export default class Badge extends React.Component {
+  state = { row: this.props };
+  render() {
+    const { title } = this.props;
+    const { row } = this.state;
+    const pos = row === "3" ? "3" : "2";
+    return (
+      <>
+        <div className="badge bold">
+          <h3>{title}</h3>
+        </div>
+        <style>{`
             .badge{
-                background-color: #2f2f2f; 
-                color: white;
+                background-color: var(--dark-blue); 
+                color: var(--site-white);
                 grid-column: 1; 
-                grid-row: ${row === "3" ? "3" : "2"};
+                grid-row: 3;
                 justify-self: end;
                 align-self: end;
                 width: 150px;
@@ -28,6 +33,7 @@ export default ({ title, row }) => {
             }
 
         `}</style>
-    </>
-  );
-};
+      </>
+    );
+  }
+}

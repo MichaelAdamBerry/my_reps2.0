@@ -8,7 +8,12 @@ class Avatar extends React.Component {
     const twitterAvatarUrl = `https://avatars.io/twitter/${twitter_id}`;
     const photoUrl = `https://theunitedstates.io/images/congress/450x550/${id}.jpg`;
     const url = twitter_id ? twitterAvatarUrl : photoUrl;
-    const row = width !== "300px" ? "2" : "3";
+    let row;
+    if (this.props.width === "300px") {
+      row = "3";
+    } else {
+      row = "2";
+    }
     return (
       <Spring
         to={{

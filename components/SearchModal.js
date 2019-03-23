@@ -160,10 +160,6 @@ export default class Search extends React.Component {
             right: 20px;
           }
 
-          .lead {
-            font-size: 22px;
-          }
-
           .modal {
             position: absolute;
             top: 0;
@@ -172,9 +168,8 @@ export default class Search extends React.Component {
             min-height: 89vh;
             max-width: 600px;
             min-width: 600px;
-            opacity: 0.9;
-            background-color: black;
-            color: white;
+            background-color: var(--main-blue);
+            color: var(--site-white);
             z-index: 500;
           }
           .form-container {
@@ -187,7 +182,7 @@ export default class Search extends React.Component {
             justify-items: center;
           }
           .form-container h3 {
-            font-size: larger;
+            font-size: 1.5em;
             text-align: center;
             grid-row: 2/3;
             grid-column: 1/5;

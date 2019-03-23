@@ -21,7 +21,18 @@ const Layout = props => (
       {props.children}
     </div>
     <style global="true">
-      {`html {
+      {`
+       :root {
+        --main-blue: #304154;
+        --dark-blue: #0f2237;
+        --site-black: #00070f;
+        --site-white: #e5e6e7;
+        --red-accent: #815a45;
+        --light-blue: #627285;
+       }
+
+
+        html {
           color: rgba(12, 12, 10, 0.8);
           line-height: 1.3;
           font-weight: 300;
@@ -50,7 +61,7 @@ const Layout = props => (
           justify-items: center;
           align-items: center;
         
-          background: #dfd7d0;
+          background: var(--site-white);
       }
       .bold {
         font-family: 'Roboto', sans-serif;

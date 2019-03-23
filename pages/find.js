@@ -8,6 +8,7 @@ import {
 import Rep from "../components/Rep";
 import Footer from "../components/Footer";
 import { Spring, config } from "react-spring";
+import ActionButton from "../components/RepCardComponents/ActionButton";
 
 const Find = props => {
   const { data, repArr } = props;
@@ -39,20 +40,14 @@ const Find = props => {
               <div className="card-three">
                 <Rep repObj={repArr[2]} order="three" />
               </div>
-              <div className="action">
-                <a
-                  href="https://projects.propublica.org/graphics/users-guide-to-democracy"
-                  className="action bold">
-                  <h3>Take Action!</h3>
-                </a>
-              </div>
+              <ActionButton />
             </div>
             <Footer />
             <style jsx>{`
               .container {
                 margin: 0;
                 width: 100vw;
-                background: #dfd7d0;
+                background: var(--site-white);
                 display: grid;
                 grid-column-gap: 4em;
                 grid-row-gap: 1.5em;
@@ -61,7 +56,7 @@ const Find = props => {
               }
 
               .header-text {
-                color: white;
+                color: var(--site-white);
                 text-align: left;
                 margin-left: 3em;
                 font-size: 17px;
@@ -72,7 +67,7 @@ const Find = props => {
 
               .header span {
                 z-index: 1;
-                background-color: red;
+                background-color: var(--red-accent);
               }
 
               .mobile-district {
@@ -93,20 +88,20 @@ const Find = props => {
                 transform: rotate(180deg);
                 text-align: after;
                 white-space: nowrap;
-                color: #2f2f2f;
+                color: var(--site-black);
                 margin-top: ${marginTop};
                 opacity: ${opacity};
               }
 
               .header {
-                color: #eae4df;
+                color: var(--site-white);
                 display: flex;
                 position: sticky;
                 top: 0;
                 z-index: 1000;
                 margin: 0;
                 width: 100%;
-                background-color: #2f2f2f;
+                background-color: var(--dark-blue);
                 grid-row: 1/2;
                 grid-column: 1 /6;
                 height: 50px;
@@ -142,16 +137,7 @@ const Find = props => {
               .bold {
                 font-family: "Roboto", sans-serif;
               }
-              .action {
-                cursor: pointer;
-                color: white;
-                grid-column: 3/4;
-                background-color: #2f2f2f;
-                min-height: 100px;
-                max-height: 100px;
-                text-align: center;
-                align-self: end;
-              }
+
               @media (min-width: 320px) and (max-width: 600px) {
                 .container {
                   display: block;

@@ -139,6 +139,7 @@ export default class RepCard extends React.Component {
                 min-height: 400px;
                 max-width: 300px;
                 justify-self: baseline;
+                padding-bottom: 1em;
               }
 
               @media (min-width: 320px) and (max-width: 600px) {
