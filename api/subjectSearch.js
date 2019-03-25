@@ -1,6 +1,8 @@
 import fetch from "isomorphic-unfetch";
 import { PKEY } from "../keys";
 
+//getSubjectSlub takes a string and returns the slug that matches api and the input str
+
 const P_KEY = PKEY();
 
 export async function getSubjectSlug(str) {

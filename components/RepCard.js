@@ -13,12 +13,12 @@ export default class RepCard extends React.Component {
       title,
       party,
       name,
+      nextElection,
       district,
       twitter_id,
       facebook_account,
       youtube_account,
       id,
-      toggleText,
       order,
       inOfficeSince
     } = this.props;
@@ -56,7 +56,7 @@ export default class RepCard extends React.Component {
                 <p>{`Served since ${moment(inOfficeSince).format(
                   "MMMM Do YYYY"
                 )}`}</p>
-                <p>{`Next election on`}</p>
+                <p>{`Next election ${nextElection}`}</p>
               </div>
               <SocialButtons
                 twitter_account={twitter_id}
@@ -89,12 +89,16 @@ export default class RepCard extends React.Component {
                 grid-column: 1 / 2;
                 grid-row: 3 /4;
                 display: block;
-                max-height: 150px;
               }
 
               .three .info h3,
               .three .info p {
                 line-height: 0.5em;
+              }
+
+              .three .facts {
+                margin-top: 1.5em;
+                margin-bottom: 1.5em;
               }
 
               .one .facts,
@@ -135,11 +139,10 @@ export default class RepCard extends React.Component {
                 grid-column: 3 / 4;
                 grid-row: 2 / 5;
                 margin-top: 3em;
-                max-height: 400px;
-                min-height: 400px;
+                max-height: 411px;
+                min-height: 411px;
                 max-width: 300px;
                 justify-self: baseline;
-                padding-bottom: 1em;
               }
 
               @media (min-width: 320px) and (max-width: 600px) {

@@ -1,3 +1,23 @@
+function nextElection(title) {
+  const electionDates = {
+    next: "11/3/2020",
+    classOne: "11/5/2024",
+    classTwo: "11/3/2020",
+    classThree: "11/8/2022"
+  };
+  if (title === "Representative") {
+    return electionDates.next;
+  }
+  const senClass = title.split(",")[1].split("");
+  if (senClass.includes("3")) {
+    return electionDates.classThree;
+  } else if (senClass.includes("2")) {
+    return electionDates.classTwo;
+  } else {
+    return electionDates.classOne;
+  }
+}
+
 function firstElected({ roles }) {
   const chamber = roles[0].chamber;
   const found = roles.find(role => {
@@ -228,5 +248,31 @@ const trentKellyData = {
 };
 
 console.log(
-  trentkelly === firstElected(trentKellyData) ? "OK" : "ERROR - TRENT KELLY"
+  "2015-06-09" === firstElected(trentKellyData) ? "OK" : "ERROR - TRENT KELLY"
+);
+
+// nextElection()
+
+//expect Representative to return "11/3/2020"
+//expect Senator, 2nd Class to return "11/3/2020"
+//expect Senator, 3rd Class to return "11/8/2022"
+//expect Senator, 1st Class to return "11/5/2024"
+
+console.log(
+  "11/3/2020" === nextElection("Representative") ? "OK" : "ERROR REPRESENTATIVE"
+);
+console.log(
+  "11/3/2020" === nextElection("Senator, 2nd Class")
+    ? "OK"
+    : "ERROR - Senator, 2nd Class"
+);
+console.log(
+  "11/8/2022" === nextElection("Senator, 3rd Class")
+    ? "OK"
+    : "ERROR - Senator, 3rd Class"
+);
+console.log(
+  "11/5/2024" === nextElection("Senator, 1st Class")
+    ? "OK"
+    : "ERROR - Senator, 1st Class"
 );

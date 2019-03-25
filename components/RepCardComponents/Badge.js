@@ -25,6 +25,7 @@ export default class Badge extends React.Component {
             }
             .badge h3 {
                 font-size : .7em;
+                margin-bottom: 0;
             }
             @media (min-width: 320px) and (max-width: 600px) {
                .badge {

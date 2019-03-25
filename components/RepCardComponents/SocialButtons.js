@@ -39,6 +39,8 @@ function SocialButtons(props) {
           width: 100%;
           margin: auto;
           justify-content: start;
+          padding-top: 0.5em;
+          padding-bottom: 0.5em;
         }
 
         .socialContainer div {

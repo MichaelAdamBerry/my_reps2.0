@@ -1,7 +1,7 @@
 # my_reps2.0
-This project is currently hosted on Zeit at https://myreps20-oljh0v61c.now.sh/
+This project is currently hosted on Zeit at https://myreps20.michaeladamberry3.now.sh/
 
-#A Congressional Lookup Tool Built Using the Propublica Congress API and Google Civics API
+# A Congressional Lookup Tool Built Using the Propublica Congress API and Google Civics API
 
 Allows users to find their US Congressional Representatives by address and to connect with them through social media or the web. 
 Users are also provided with other resources to engage with their represenatives more fully. 
@@ -10,11 +10,11 @@ Users are also provided with other resources to engage with their represenatives
 
 ![home component](https://github.com/MichaelAdamBerry/my_reps2.0/blob/master/readme-img/desktop-rep-view.png)
 
-#To Run Locally
+# To Run Locally
 
 You will need to register with Propublica and Google to in order to run this project on your machine locally.
 
-#Next Steps
+# Next Steps
 
 Future versions will include more a robust biography of each representative and statistics such as voting record, and campaign finance reports.
 

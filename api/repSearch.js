@@ -1,6 +1,7 @@
 import { PKEY } from "../keys";
 import fetch from "isomorphic-unfetch";
 import axios from "axios";
+import moment from "moment";
 
 const P_KEY = PKEY();
 
@@ -143,3 +144,23 @@ export function firstElected({ roles }) {
 }
 
 //TODO nextElection(startdate, role) should return the next election date for Rep
+
+export function nextElection(title) {
+  const electionDates = {
+    next: "November 3rd, 2020",
+    classOne: "November 5th, 2024",
+    classTwo: "November 3rd, 2020",
+    classThree: "November 8th, 2022"
+  };
+  if (title === "Representative") {
+    return electionDates.next;
+  }
+  const senClass = title.split(",")[1].split("");
+  if (senClass.includes("3")) {
+    return electionDates.classThree;
+  } else if (senClass.includes("2")) {
+    return electionDates.classTwo;
+  } else {
+    return electionDates.classOne;
+  }
+}
