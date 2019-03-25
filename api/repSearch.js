@@ -4,6 +4,7 @@ import axios from "axios";
 
 const P_KEY = PKEY();
 
+//at this point we aren't using the hearingsl
 const urls = {
   proPublica: {
     main: "https://api.propublica.org/congress/",
@@ -14,6 +15,8 @@ const urls = {
       "https://api.propublica.org/congress/v1/members/house/"
   }
 };
+
+//for future component focused on Legislative action
 export async function getRecentCommitteeHearings(congress, chamber, code) {
   try {
     const { hearings } = urls.proPublica;
@@ -36,6 +39,7 @@ export async function getRecentCommitteeHearings(congress, chamber, code) {
   }
 }
 
+//for future component focused on representative's voting record
 export async function getRepsRecentVotes(member_id) {
   try {
     const { reps } = urls.proPublica;
@@ -49,6 +53,7 @@ export async function getRepsRecentVotes(member_id) {
   }
 }
 
+//future component -- fetches bills co sponsored by specific rep
 export async function getRepsSponsoredBills(member_id) {
   try {
     const { reps } = urls.proPublica;
@@ -136,3 +141,5 @@ export function firstElected({ roles }) {
     found === undefined ? roles[roles.length - 1].start_date : found.start_date;
   return servedSince;
 }
+
+//TODO nextElection(startdate, role) should return the next election date for Rep

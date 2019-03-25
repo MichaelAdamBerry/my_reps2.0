@@ -9,6 +9,8 @@ const formatAddress = userInput => {
   return formatted;
 };
 
+//helper functions using regular expressions to get the state and district from recieved data string
+
 const getStateFromString = string => {
   const re1 = ".*?";
   const re2 =
@@ -38,6 +40,10 @@ const parseDivisionAndState = divisionId => {
   const dataObj = { state, district };
   return dataObj;
 };
+
+//takes a string and returns a formatted district object.
+//e.g. {state: "NY/" , district: "8/", name : "New York's 8th Congressional District"}
+//.state and .district are formatted for use in fetching data from Propublica API
 
 const fetchData = async userInput => {
   try {

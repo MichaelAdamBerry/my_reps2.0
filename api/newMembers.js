@@ -3,6 +3,8 @@ import fetch from "isomorphic-unfetch";
 
 const P_KEY = PKEY();
 
+//future component to employ.
+//TODO : Research how to get results > 20. Initial implementation returned only Republicans
 export async function getNewMembers() {
   try {
     const url = "https://api.propublica.org/congress/v1/members/new.json";
