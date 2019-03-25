@@ -1,5 +1,5 @@
 # my_reps2.0
-This project is currently hosted on Zeit at https://myreps20-oljh0v61c.now.sh/
+This project is currently hosted on Zeit at https://myreps20.michaeladamberry3.now.sh/
 
 # A Congressional Lookup Tool Built Using the Propublica Congress API and Google Civics API
 
