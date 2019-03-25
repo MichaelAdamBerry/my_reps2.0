@@ -15,8 +15,6 @@ class Index extends React.Component {
   renderModal = () =>
     this.state.clicked && <SearchModal modalClose={this.cancelClicked} />;
   render() {
-    const { clicked } = this.state;
-    const renderUnderLine = () => <Underline hovered={true} />;
     return (
       <Spring
         from={{ opacity: "0" }}
@@ -71,14 +69,14 @@ class Index extends React.Component {
               <div className="line">
                 {" "}
                 <div className="line-title bold">
-                  <p>Fnd My Reps</p>
+                  <p>Find My Reps</p>
                 </div>
               </div>
               <div className="three">
                 <div className="text-container">
                   <div>
                     <p className="bold">
-                      Find your destrict and learn more about your Senators and
+                      Find your district and learn more about your Senators and
                       Congressperson.
                     </p>
                   </div>
@@ -199,9 +197,10 @@ class Index extends React.Component {
           }
 
           .text-container {
-            height: 98%;
-            margin: 2%; 
-            font-size: 22px;
+            height: 100%;
+            margin: 2%;
+            font-size: 27px;
+            text-align: justify;
             line-height: 1.5em; 
             display: flex;
             flex-direction: column;
@@ -237,7 +236,7 @@ class Index extends React.Component {
             grid-row: 3 / 5;
             background-color: var(--main-blue);
             z-index: 1;
-            opacity: .8;
+            opacity: .95;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -270,7 +269,7 @@ class Index extends React.Component {
             grid-row: 4 / 6;
             z-index: 1;
             opacity: .9;
-            background-color: var(--red-accent);
+            background-color: var(--light-blue);
             color: var(--site-black);
             box-shadow: 5px 5px 20px grey;
             display: flex; 

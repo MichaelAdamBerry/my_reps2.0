@@ -10,6 +10,7 @@ import PlacesAutocomplete, {
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Spring, config } from "react-spring";
 
 library.add(faTimesCircle);
 
@@ -118,8 +119,14 @@ AutoSearch.propTypes = {
 
 export default class Search extends React.Component {
   state = {
-    searchText: ""
+    searchText: "",
+    fromError: this.props.fromError
   };
+
+  static defaultProps = {
+    fromError: false
+  };
+
   repLookup = event => {
     //event.preventDefault();
     console.log(`search submitted with ${this.state.searchText}`);
@@ -128,93 +135,120 @@ export default class Search extends React.Component {
   inputChange = address => {
     this.setState({ searchText: address });
   };
+
   render() {
+    const renderError = () => {
+      return (
+        <>
+          {this.state.fromError ? (
+            <p>
+              That address does not seem to exist. Make sure it is formatted
+              correctly and try again
+            </p>
+          ) : (
+            ""
+          )}
+        </>
+      );
+    };
     console.log(PKEY());
     const { searchText } = this.state;
     const { modalClose } = this.props;
     return (
-      <div className="modal">
-        <div className="form-container">
-          <div className="closeBtn" onClick={modalClose}>
-            <FontAwesomeIcon
-              icon={faTimesCircle}
-              style={{ height: "40px", width: "40px", cursor: "pointer" }}
-            />
-          </div>
-          <h3 className="lead bold">Enter your address to find your reps</h3>
+      <Spring
+        from={{ opacity: 0, top: -400 }}
+        to={{ opacity: 1, top: 0 }}
+        config={config.gentle}>
+        {({ opacity, top }) => (
+          <>
+            <div className="modal">
+              <div className="closeBtn" onClick={modalClose}>
+                <FontAwesomeIcon
+                  icon={faTimesCircle}
+                  style={{ height: "40px", width: "40px", cursor: "pointer" }}
+                />
+              </div>
+              <div className="form-container">
+                <h3 className="lead bold">
+                  Enter your address to find your reps
+                </h3>
+                <form onSubmit={this.repLookup}>
+                  <AutoSearch
+                    handleChange={this.inputChange}
+                    handleSelect={this.repLookup}
+                    address={searchText}
+                  />
+                </form>
+                <span>{renderError()}</span>
+              </div>
+            </div>
+            <style jsx>{`
+              .closeBtn svg {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                color: white;
+                z-index: 1;
+              }
 
-          <form onSubmit={this.repLookup}>
-            <AutoSearch
-              handleChange={this.inputChange}
-              handleSelect={this.repLookup}
-              address={searchText}
-            />
-          </form>
-        </div>
-        <style jsx>{`
-          .closeBtn {
-            cursor: pointer;
-            position: fixed;
-            font-size: larger;
-            top: 20px;
-            right: 20px;
-          }
+              .modal {
+                opacity: ${opacity};
+                position: absolute;
+                top: ${top}px;
+                left: calc((100vw - 600px) / 2);
+                min-height: 89vh;
+                max-width: 600px;
+                min-width: 600px;
+                background-color: var(--main-blue);
+                color: var(--site-white);
+                z-index: 500;
+              }
+              .form-container {
+                min-height: 90vh;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+                grid-row-gap: 2em;
+                justify-items: center;
+              }
+              .form-container h3 {
+                font-size: 1.5em;
+                text-align: center;
+                grid-row: 2/3;
+                grid-column: 1/5;
+              }
+              .form-container form {
+                grid-row: 3 / 5;
+                grid-column: 1 / 5;
+              }
 
-          .modal {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: calc((100vw - 600px) / 2);
-            min-height: 89vh;
-            max-width: 600px;
-            min-width: 600px;
-            background-color: var(--main-blue);
-            color: var(--site-white);
-            z-index: 500;
-          }
-          .form-container {
-            min-height: 90vh;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            grid-row-gap: 2em;
-            justify-items: center;
-          }
-          .form-container h3 {
-            font-size: 1.5em;
-            text-align: center;
-            grid-row: 2/3;
-            grid-column: 1/5;
-          }
-          .form-container form {
-            grid-row: 3 / 5;
-            grid-column: 1 / 5;
-          }
+              @media (min-width: 300px) and (max-width: 600px) {
+                .modal {
+                  min-height: 500px;
+                  min-width: 100vw;
+                  max-width: 100vw;
+                  left: 0;
+                }
+                .form-container {
+                  width: 80vw;
+                  margin: auto;
+                }
 
-          @media (min-width: 300px) and (max-width: 600px) {
-            .modal {
-              min-height: 500px;
-              min-width: 100vw;
-              max-width: 100vw;
-              left: 0;
-            }
-            .form-container {
-              width: 80vw;
-              margin: auto;
-            }
-
-            .closeBtn svg {
-              display: block;
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              color: white;
-              z-index: 1;
-            }
-          }
-        `}</style>
-      </div>
+                .closeBtn svg {
+                  display: block;
+                  position: fixed;
+                  top: 20px;
+                  right: 20px;
+                  color: white;
+                  z-index: 1;
+                }
+              }
+            `}</style>
+          </>
+        )}
+      </Spring>
     );
   }
 }

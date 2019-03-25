@@ -9,16 +9,14 @@ export default class Rep extends React.Component {
   render() {
     const { repObj, showText } = this.state;
     const order = this.props.order;
-    const name = repObj.first_name
-      ? `${repObj.first_name} ${repObj.last_name}`
-      : "";
-    const twitter_id = repObj.twitter_account ? repObj.twitter_account : "";
-    const id = repObj.id ? repObj.id : "";
-    const { party } = repObj.roles ? repObj.roles[0] : "";
-    const { title } = repObj.roles ? repObj.roles[0] : "";
-    const inOfficeSince = repObj.roles ? firstElected(repObj) : "";
+    const name = repObj ? `${repObj.first_name} ${repObj.last_name}` : "";
+    const twitter_id = repObj ? repObj.twitter_account : "";
+    const id = repObj ? repObj.id : "";
+    const { party } = repObj ? repObj.roles[0] : "";
+    const { title } = repObj ? repObj.roles[0] : "";
+    const inOfficeSince = repObj ? firstElected(repObj) : "";
     const { youtube_account, facebook_account } = repObj;
-    const url = repObj.url ? repObj.url : "";
+    const url = repObj ? repObj.url : "";
 
     return (
       <a href={url}>

@@ -42,6 +42,12 @@ export default props => {
           <li>
             <a href="https://www.mediamatters.org/">media matters</a>
           </li>
+          <li>
+            <a href="http://www.openelections.net/">open elections</a>
+          </li>
+          <li>
+            <a href="https://www.headcount.org/">head count</a>
+          </li>
         </ul>
       </div>
       <div className="quote">
@@ -65,7 +71,7 @@ export default props => {
           margin-top: 3em;
           grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
           grid-template-rows: 1fr 40px;
-          border-top: solid 5px var(--red-accent);
+          border-top: solid 5px var(--gold-accent);
         }
 
         .footer li {

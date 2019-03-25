@@ -10,9 +10,7 @@ export default class Underline extends React.Component {
         onMouseOver={this.setHover}
         onMouseLeave={this.cancelHover}>
         <p>{this.props.text}</p>
-        <Spring
-          to={{ width: this.state.hovered ? "100" : "0" }}
-          config={config.stiff}>
+        <Spring to={{ width: this.state.hovered ? "100" : "0" }}>
           {({ width }) => (
             <div>
               <svg height="20" width={width}>

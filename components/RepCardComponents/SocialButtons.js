@@ -8,7 +8,7 @@ function SocialButtons(props) {
   const svgStyle = {
     height: "16px",
     width: "16px",
-    color: "var(--red-accent)"
+    color: "var(--gold-accent)"
   };
   return (
     <div className="socialContainer">

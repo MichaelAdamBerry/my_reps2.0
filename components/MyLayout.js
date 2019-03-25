@@ -27,8 +27,9 @@ const Layout = props => (
         --dark-blue: #0f2237;
         --site-black: #00070f;
         --site-white: #e5e6e7;
-        --red-accent: #815a45;
+        --red-accent: #B60031;
         --light-blue: #627285;
+        --gold-accent: #a38c78;
        }
 
 
