@@ -12,6 +12,7 @@ const Layout = props => (
     <Head>
       <title>My_Reps2.0</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
       <link
         href="https://fonts.googleapis.com/css?family=Roboto:700|Suranna|Noto+Serif+TC"
         rel="stylesheet"
