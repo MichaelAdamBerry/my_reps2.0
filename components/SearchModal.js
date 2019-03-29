@@ -205,7 +205,7 @@ export default class Search extends React.Component {
                 z-index: 500;
               }
               .form-container {
-                min-height: 90vh;
+                min-height: 100vh;
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr 1fr;
