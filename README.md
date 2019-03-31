@@ -6,9 +6,11 @@ This project is currently hosted on Zeit at https://myreps20.michaeladamberry3.n
 Allows users to find their US Congressional Representatives by address and to connect with them through social media or the web. 
 Users are also provided with other resources to engage with their represenatives more fully. 
 
-![home component](https://github.com/MichaelAdamBerry/my_reps2.0/blob/master/readme-img/desktop-home-view.png)
+![home component](https://github.com/MichaelAdamBerry/my_reps2.0/blob/master/readme-img/home-desktop-1.png)
 
-![home component](https://github.com/MichaelAdamBerry/my_reps2.0/blob/master/readme-img/desktop-rep-view.png)
+![home component](https://github.com/MichaelAdamBerry/my_reps2.0/blob/master/readme-img/home-dektop-2.png)
+
+![district component](https://github.com/MichaelAdamBerry/my_reps2.0/blob/master/readme-img/district-desktop.png)
 
 # To Run Locally
 
