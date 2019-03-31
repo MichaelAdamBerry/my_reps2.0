@@ -22,6 +22,7 @@ const AutoSearch = props => (
       value={props.address}
       onChange={props.handleChange}
       onSelect={props.handleSelect}
+      onSubmit={props.handleSelect}
       searchOptions={{ country: "us", types: ["address"] }}>
       {({ getInputProps, suggestions, getSuggestionItemProps }) => (
         <div className="autoComplete">
@@ -33,7 +34,7 @@ const AutoSearch = props => (
             })}
           />
           <div className="btn-container">
-            <button className="bold" type="submit">
+            <button className="bold" type="submit" onClick={props.handleSelect}>
               find my reps
             </button>
           </div>
@@ -66,9 +67,8 @@ const AutoSearch = props => (
       )}
     </PlacesAutocomplete>
     <style jsx>{`
-
-
-      .autoComplete input, .autocomplete-dropdown-container {
+      .autoComplete input,
+      .autocomplete-dropdown-container {
         min-width: 500px;
         max-width: 500px;
         font-size: 1.5em;
@@ -77,36 +77,38 @@ const AutoSearch = props => (
         color: white;
       }
       .autoComplete input {
-          border: none; 
-          border-bottom: solid white;
-          height: 2em;
+        border: none;
+        border-bottom: solid white;
+        height: 2em;
       }
       .btn-container {
-          margin-top: 2em;
-          margin-bottom: 2em;
-          display: flex;
-          justify-content: center;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        display: flex;
+        justify-content: center;
       }
       .btn-container button {
-      
         font-size: large;
         height: 45px;
         width: 150px;
-        background-color: #ffffff
+        background-color: var(--site-white);
         color: black;
         cursor: pointer;
       }
       .autocomplete-dropdown-container {
-          color: #2f2f2f;
-          max-height: 200px; 
-          overflow: hidden;
+        color: #2f2f2f;
+        position: relative;
+        max-height: 200px;
+        overflow: hidden;
       }
       @media (min-width: 320px) and (max-width: 600px) {
-        .autoComplete input, .autocomplete-dropdown-container {
-            min-width: 300px;
-            max-width: 300px;
-            font-size: 1em;
-    }
+        .autoComplete input,
+        .autocomplete-dropdown-container {
+          min-width: 300px;
+          max-width: 300px;
+          font-size: 1em;
+        }
+      }
     `}</style>
   </>
 );
@@ -128,7 +130,7 @@ export default class Search extends React.Component {
   };
 
   repLookup = event => {
-    //event.preventDefault();
+    event.preventDefault();
     console.log(`search submitted with ${this.state.searchText}`);
     Router.push(`/find?address=${this.state.searchText}`);
   };
@@ -161,25 +163,32 @@ export default class Search extends React.Component {
         config={config.gentle}>
         {({ opacity, top }) => (
           <>
-            <div className="modal">
-              <div className="closeBtn" onClick={modalClose}>
-                <FontAwesomeIcon
-                  icon={faTimesCircle}
-                  style={{ height: "40px", width: "40px", cursor: "pointer" }}
-                />
-              </div>
-              <div className="form-container">
-                <h3 className="lead bold">
-                  Enter your address to find your reps
-                </h3>
-                <form onSubmit={this.repLookup}>
-                  <AutoSearch
-                    handleChange={this.inputChange}
-                    handleSelect={this.repLookup}
-                    address={searchText}
+            <div>
+              <div className="modal">
+                <div className="closeBtn" onClick={modalClose}>
+                  <FontAwesomeIcon
+                    icon={faTimesCircle}
+                    style={{
+                      height: "40px",
+                      width: "40px",
+                      cursor: "pointer",
+                      float: "right"
+                    }}
                   />
-                </form>
-                <span>{renderError()}</span>
+                </div>
+                <div className="form-container">
+                  <h3 className="lead bold">
+                    Enter your address to find your reps
+                  </h3>
+                  <form onSubmit={this.repLookup}>
+                    <AutoSearch
+                      handleChange={this.inputChange}
+                      handleSubmit={e => this.repLookup(e)}
+                      address={searchText}
+                    />
+                  </form>
+                  <span>{renderError()}</span>
+                </div>
               </div>
             </div>
             <style jsx>{`
@@ -189,23 +198,35 @@ export default class Search extends React.Component {
                 top: 20px;
                 right: 20px;
                 color: white;
-                z-index: 1;
+                z-index: 100;
+              }
+
+              .modal:before {
+                content: "";
+                display: none;
+                filter: opacity(0.8);
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 10;
               }
 
               .modal {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
                 opacity: ${opacity};
-                position: absolute;
-                top: ${top}px;
-                left: calc((100vw - 600px) / 2);
-                min-height: 89vh;
-                max-width: 600px;
-                min-width: 600px;
+                margin: 0 2em;
+                padding: 1em;
                 background-color: var(--main-blue);
                 color: var(--site-white);
                 z-index: 500;
               }
               .form-container {
-                min-height: 100vh;
+                min-height: 60vh;
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -216,7 +237,7 @@ export default class Search extends React.Component {
               .form-container h3 {
                 font-size: 1.5em;
                 text-align: center;
-                grid-row: 2/3;
+                grid-row: 1/3;
                 grid-column: 1/5;
               }
               .form-container form {
@@ -226,23 +247,26 @@ export default class Search extends React.Component {
 
               @media (min-width: 300px) and (max-width: 600px) {
                 .modal {
-                  min-height: 500px;
-                  min-width: 100vw;
-                  max-width: 100vw;
-                  left: 0;
+                  margin: 0;
+                  top: 40%;
                 }
+
+                .form-container h3 {
+                  line-height: 1em;
+                }
+
                 .form-container {
                   width: 80vw;
-                  margin: auto;
+                  display: block;
                 }
 
                 .closeBtn svg {
                   display: block;
                   position: fixed;
                   top: 20px;
-                  right: 20px;
+                  left: 20px;
                   color: white;
-                  z-index: 1;
+                  z-index: 60;
                 }
               }
             `}</style>

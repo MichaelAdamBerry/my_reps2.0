@@ -14,7 +14,7 @@ const Layout = props => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
       <link
-        href="https://fonts.googleapis.com/css?family=Roboto:700|Suranna|Noto+Serif+TC"
+        href="https://fonts.googleapis.com/css?family=Roboto:700|Sura"
         rel="stylesheet"
       />
     </Head>
@@ -41,7 +41,7 @@ const Layout = props => (
           text-rendering: optimizeLegibility;
           font-kerning: normal;
           text-size-adjust: 100%;
-          font-family: 'Suranna', serif;
+          font-family: 'Sura', serif;
       }
       body {
         display: block;
@@ -51,7 +51,6 @@ const Layout = props => (
       a {
         text-decoration: none;
       }
-
       .gold{
         color: #eae4df
       }
@@ -63,21 +62,10 @@ const Layout = props => (
           justify-items: center;
           align-items: center;
         
-          background: var(--site-white);
+        
       }
       .bold {
         font-family: 'Roboto', sans-serif;
-      }
-      
-      .gradientA {
-        background: rgba(212,228,239,1);
-background: -moz-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
-background: -webkit-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -o-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -ms-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: radial-gradient(ellipse at center, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
       }
       @media (min-width: 320px) and (max-width: 600px) {
           display: block

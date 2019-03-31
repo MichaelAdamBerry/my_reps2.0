@@ -1,11 +1,11 @@
 import Layout from "./MyLayout";
 import Footer from "./Footer";
+import Content from "./Content";
 import SearchModal from "./SearchModal";
-import { Spring, config } from "react-spring";
-import Underline from "./RepCardComponents/Underline";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Attributions from "./Attributions";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import BgImage from "./BgImage";
 library.add(faBars);
 
 class MainContent extends React.Component {
@@ -16,113 +16,43 @@ class MainContent extends React.Component {
     this.state.clicked && <SearchModal modalClose={this.cancelClicked} />;
   render() {
     return (
-      <Spring
-        from={{ opacity: "0" }}
-        to={{ opacity: "1" }}
-        config={config.molasses}>
-        {({ opacity }) => (
-          <Layout>
-            {this.renderModal()}
-            <div
-              className="index-container"
-              style={{ opacity }}
-              onClick={this.setClicked}>
-              <div className="two bold">
-                <Underline text="Find" />
-                <Underline text="Follow" />
-                <Underline text="Connect" />
-              </div>
-              <div className=" one">
-                <div className="info">
-                  <h3 className="bold">
-                    Study by{" "}
-                    <a href="https://www.haveninsights.com/just-37-percent-name-representative/">
-                      Haven Insights
-                    </a>{" "}
-                    Shows an Electorate Increasingly Distanced From Their
-                    Representatives
-                  </h3>
-
-                  <ul>
-                    <li>
-                      While just over half (56%) of Americans know their
-                      Representative’s party affiliation, only one-third (37%)
-                      know their Representative’s name{" "}
-                    </li>
-                    <li>
-                      Less than half of Americans can name their Representative,
-                      yet 65% believe their Representative is overpaid.
-                    </li>
-                    <li>
-                      Twenty-three percent of Americans who voted for a
-                      Representative last November cannot name their current
-                      Representative
-                    </li>
-                    <li />
-                  </ul>
-                </div>
-              </div>
-              <div className="line">
-                {" "}
-                <div className="line-title bold">
-                  <p>Find My Reps</p>
-                </div>
-              </div>
-              <div className="three">
-                <div className="text-container">
-                  <div>
-                    <p className="bold">
-                      Find your district and learn more about your Senators and
-                      Congressperson.
-                    </p>
-                  </div>
-                  <div className="attributions">
-                    <div>
-                      <p>
-                        Powered by the Propublica Congress API & the Google
-                        Civics API
-                      </p>
-                    </div>
-                    <div>
-                      <p>Made with React and Next.js</p>
-                    </div>
-                    <div className="img-container">
-                      <img
-                        src="../static/propublica-data-store.png"
-                        alt="propbulica data store logo"
-                        style={{ height: "20px", width: "auto" }}
-                      />
-                      <img
-                        src="../static/google-civics-api.png"
-                        alt="google api logo"
-                        style={{ height: "20px", width: "auto" }}
-                      />
-                      <img
-                        src="../static/react.png"
-                        alt="react logo"
-                        style={{ height: "20px", width: "auto" }}
-                      />
-                      <img
-                        src="../static/nextjs.png"
-                        alt="next.js api logo"
-                        style={{ height: "20px", width: "auto" }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mobile-toggle">
-                <FontAwesomeIcon
-                  icon={faBars}
-                  style={{ height: "40px", width: "40px", cursor: "pointer" }}
-                />
-              </div>
+      <Layout>
+        <BgImage
+          dark={true}
+          opacity=".7"
+          imgSrc="../static/washington-animation.jpg"
+        />
+        <div className="index-container" onClick={this.props.setClicked}>
+          <div className=" one">
+            <Content />
+          </div>
+          <div className="three">
+            <div className="img-container">
+              <img src="../static/capitol-street-view.jpg" />
             </div>
-            <Footer />
-            <style jsx>{`
+            <div className="text-container">
+              <div>
+                <p onClick={this.renderModal}>
+                  Look up and connect with your Congressperson and Senators.
+                </p>
+              </div>
+              <Attributions />
+            </div>
+          </div>
+        </div>
+        <Footer />
+        <style jsx>{`
 
-          
-   
+          .img-container {
+            margin-top: 3em;
+            display: flex;
+            justify-content: center;
+          }
+
+          img { 
+            width: 75%; 
+            height: 75%;
+          }
           .search-btn {
             grid-column: 5;
             justify-self: start;
@@ -134,11 +64,11 @@ class MainContent extends React.Component {
 
           .index-container { 
             display: grid;
-            grid-gap: 30px; 
+            grid-row-gap: 3em; 
             width: 100%;
             cursor: pointer;
-            color: var(--main-blue);
-            grid-template-columns: 1fr 1fr 200px 200px 150px 1fr 1fr;
+            color: var(--site-white);
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
           }
 
           .logo {
@@ -150,51 +80,13 @@ class MainContent extends React.Component {
             transform: rotate(10deg);
           }
 
-          ul {
-            list-style-type: none;
-            padding-inline-start: 0;
-            margin-inline-start: 10px;
-            margin-inline-end: 10px;
-
-          }
-
-          li {
-            margin-bottom: 1em;
-          }
-
-          .info {
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            margin: auto;
-            text-align: justify;
-            font-size: 14.5px;
-            padding: 3px;
-          }
-
           .img-container {
             display: flex; 
             justify-content: space-around;
           }
-          .info h3 {
-            border-bottom: solid 2px;
-            padding-bottom: 10px;
-            padding-right: 1em;
-            padding-left: 1em;
-            color: var(--site-black);
-          }
-
-          .info p {
-            font-style: italic;
-            color: var(--light-blue);
-            line-height: 1.5em;
-            padding-left: 1.5em;
-            padding-right: 1.5em;
-          }
-
+      
           .text-container {
-            height: 100%;
-            margin: 2%;
+            padding: 1em;
             font-size: 27px;
             text-align: justify;
             line-height: 1.5em; 
@@ -203,126 +95,53 @@ class MainContent extends React.Component {
             justify-content: space-around;
           }
 
-        
-
-
-
-          .line {
-            grid-column: 2/3;
-            grid-row: 2/6;
-            border-right: solid 5px;
-            display:flex; 
-            flex-direction: column;
-            justify-content: center;
-            margin-right: 3em;
-            color: var(--main-blue);
+          .text-container p {
+            text-decoration: underline;
+            text-decoration-color: red;
+            width: 75%;
+            margin: auto;
           }
-
-          .line-title {
-            font-size: larger;
-            color: white;
-            transform: rotate(270deg);
-            background-color: var(--red-accent);
-            white-space: nowrap;
-            padding: 0 1em 0 1em;
+         
+          .one, .three {
+            max-width: 750px;
+            width: 100%;
+            justify-self: center;
           }
-
-          .two {
-            grid-column: 3 /5;
-            grid-row: 3 / 5;
-            background-color: var(--main-blue);
-            z-index: 1;
-            opacity: .95;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            font-size: 27px;
-          }
-
-          .two div {
-            margin-left: 2em;
-          }
-
+          
           .one {
             overflow: hidden;
-            grid-column: 4 / 6;
+            grid-column: 1 / 4;
             display: flex;
-            grid-row: 2 / 4;
+            grid-row: 1 / 6;
             z-index: 5;
+
           }
 
-          .two , .three ,  .one {
-            width: 350px;
-            height: 350px;
-          }
-          .icon-container {
-            display: flex; 
-            flex-direction: column;
-            justify-content: center;
-          }
           .three {
-            grid-column: 4 / 6;
-            grid-row: 4 / 6;
+            grid-column: 4/ 7;
+            grid-row: 1 / 6;
             z-index: 1;
-            opacity: .9;
-            background-color: var(--light-blue);
-            color: var(--site-black);
-            box-shadow: 5px 5px 20px grey;
+            color: var(--site-white)
             display: flex; 
             flex-direction: column;
             justify-content: center;
           }
-          .attributions {
-            min-height: 100px;
-            border-top: solid 1px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            font-size: 13px;
-            font-style: italic;
-            color: var(--site-white);
-          }
-          .attributions p{
-            margin-block-start: 3px; 
-            margin-block-end: 3px;
-            line-height: 1em;
-          }
+
           .search-btn button {
-            font-size: large;
-            height: 45px;
-            width: 150px;
+            height: 60px;
+            width: 120px;
             background-color: #ffffff
             color: black;
             cursor: pointer;
           }
-          .logo{
-            grid-column: -2; 
-            margin-left: 50px;
-            border-radius: 30px;
-            height: 57px;
-            width: 57px;
-            margin-top: 10px;
 
-          }
-          .header {
-            color: #eae4df;
-            margin: 0;
-            width: 100vw;
-            height: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            align-items: center;
-          }
-          .site-title {
-            grid-column: 2/5;
-            justify-self: center;
+          .btn {
+              display: flex; 
+              justify-content: center;
+              margin: 1em 0; 
+    
           }
 
-          .site-title h2, .site-title p {
-            text-align: center;
-            margin-block-start: 0;
-            margin-block-end: 0;
-          }
 
           @media (min-width: 320px) and (max-width: 480px) {
   
@@ -341,23 +160,27 @@ class MainContent extends React.Component {
               display: none;
             }
 
-            .one div {
+            div .one{
                 margin-top: 70px;
+                min-height: 100vh;
+                font-size: 1.2em;
+                color: var(--site-black);
             }
 
             .one, .three {
               margin: auto;
               margin-bottom: 20px;
-              width: 100vw;
+              max-width: 95vw;
              
             }
 
-            .info, text-container {
-                padding: 0 1em;
+           .text-container {
+              padding: 1em 0 0 0;
+              line-height: 1em;
             }
 
             .two {
-                display: none;
+              display: none;
               height: 125px;
               width: 100%; 
               margin-bottom: 20px;
@@ -389,9 +212,7 @@ class MainContent extends React.Component {
             }
           }
         `}</style>
-          </Layout>
-        )}
-      </Spring>
+      </Layout>
     );
   }
 }

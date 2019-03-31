@@ -68,7 +68,6 @@ export default props => {
           min-height: 188px;
           justify-content: space-around;
           padding: 50px 0;
-          margin-top: 3em;
           grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
           grid-template-rows: 1fr 40px;
           border-top: solid 5px var(--gold-accent);

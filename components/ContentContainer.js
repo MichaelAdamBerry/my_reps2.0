@@ -1,4 +1,9 @@
+//the cover image of the main part of the page
+//should change opacity and darken
+
 import MainContent from "./MainContent";
+import BgImage from "./BgImage";
+
 export default class ContentContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -7,76 +12,54 @@ export default class ContentContainer extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="img-container">
-          <img
-            ref={this.imgRef}
-            src="../static/washington-animation.jpg"
-            alt="United States Capitol at Night"
-          />
+      <div>
+        <div className="fixedImg">
+          <BgImage opacity=".3" imgSrc="../static/washington-animation.jpg" />
+        </div>
+        <div className="scroll-text">
           <h3 className="bold">
             37% of Americans Can't name their US Representative
           </h3>
         </div>
-        <div className="content-holder">
-          <MainContent />
-        </div>
+        <BgImage
+          opacity=".0"
+          dark="true"
+          imgSrc="../static/washington-animation.jpg">
+          <div className="content-holder">
+            <MainContent setClicked={this.props.setClicked} />
+          </div>
+        </BgImage>
         <style jsx>
           {`
-            .container {
-              min-height: 100vh;
-              max-height: 100vh;
-              overflow-y: scroll;
-            }
-
             .content-holder {
               filter: brightness(1);
             }
-
-            .img-container {
-              width: 100vw;
-              position: sticky;
-              top: 0;
-            }
             h3 {
-                position: absolute;
-                top: 60vh;
-                color: white;
-                font-size: 3.5em;
-                margin: 1em;
-            }}
-
-            img {
-              width: 100vw;
+              color: var(--dark-blue);
+              font-size: 2em;
+              text-align: center;
+              line-height: 2em;
+              margin: 0;
+            }
+            .scroll-text {
+              min-height: 15vh;
+              min-width: 100vw;
+              background-color: var(--site-white);
             }
 
             @media (min-width: 320px) and (max-width: 480px) {
-                img {
-                height: 100vh;
-                width: auto;
-                position: relative;
-                top: 0;
-                right: 326px;
-
-                }
-
-                h3 {
-
-                    position: absolute;
-                    top: 22vh;
-                    color: white;
-                    font-size: 3.5em;
-                    margin: .5em;
-                   
-                 }
-
-                .img-container {
-                    overflow: hidden;
-                    filter: grayscale(100%);
-
-                
-                }
-            
+              h3 {
+                position: absolute;
+                color: var(--dark-blue);
+                font-size: 1em;
+                margin: 0.5em;
+              }
+              .content-holder {
+                background-color: var(--site-black);
+              }
+              .fixedImg {
+                display: none;
+              }
             }
           `}
         </style>

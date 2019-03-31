@@ -36,6 +36,13 @@ export default class ActionButton extends React.Component {
             text-align: center;
             align-self: end;
           }
+
+          @media (min-width: 320px) and (max-width: 480px) {
+            .action {
+              font-size: 1em;
+              margin: 2em 3em;
+            }
+          }
         `}</style>
       </>
     );

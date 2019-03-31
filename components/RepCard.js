@@ -156,7 +156,7 @@ export default class RepCard extends React.Component {
                   max-width: 300px;
                   justify-self: baseline;
                   grid-template-columns: 1fr;
-                  grid-template-rows: 1fr 1fr 1fr;
+                  grid-template-rows: 1fr 1fr 1fr 10px;
                 }
 
                 .one .info,

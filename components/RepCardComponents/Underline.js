@@ -29,7 +29,7 @@ export default class Underline extends React.Component {
           p {
             font-size: 27px;
             margin-block-end: 0;
-            color: var(--site-white);
+            color: var(--dark-blue);
           }
           .container {
             margin-left: 2em;

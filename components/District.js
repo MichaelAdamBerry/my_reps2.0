@@ -1,5 +1,6 @@
 import Layout from "../components/MyLayout";
 import Spinner from "../components/Spinner";
+import Header from "../components/Header";
 import {
   getCurrentHouseMember,
   getCurrentSenateMembers,
@@ -48,8 +49,8 @@ export default class District extends React.Component {
             {({ marginTop, opacity }) => (
               <>
                 <div className="container">
-                  <div className="header bold">
-                    <span className="header-text">Find My Reps</span>
+                  <div style={{ gridColumn: "1/6" }}>
+                    <Header />
                   </div>
                   <div className="district bold">
                     <h1>{name ? name.split(" ").join(" ") : ""}</h1>
@@ -78,22 +79,7 @@ export default class District extends React.Component {
                     grid-column-gap: 4em;
                     grid-row-gap: 1.5em;
                     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-                    grid-template-rows: 50px 1fr 1fr 1fr 1fr;
-                  }
-
-                  .header-text {
-                    color: var(--site-white);
-                    text-align: left;
-                    margin-left: 3em;
-                    font-size: 17px;
-                    padding: 0.5em;
-                    font-size: 17px;
-                    display: flex;
-                  }
-
-                  .header span {
-                    z-index: 1;
-                    background-color: var(--red-accent);
+                    grid-template-rows: 50px 1fr 1fr 1fr 1fr 50px;
                   }
 
                   .mobile-district {
@@ -119,21 +105,6 @@ export default class District extends React.Component {
                     opacity: ${opacity};
                   }
 
-                  .header {
-                    color: var(--site-white);
-                    display: flex;
-                    position: sticky;
-                    top: 0;
-                    z-index: 1000;
-                    margin: 0;
-                    width: 100%;
-                    background-color: var(--dark-blue);
-                    grid-row: 1/2;
-                    grid-column: 1 /6;
-                    height: 50px;
-                    justify-self: stretch;
-                    border-bottom: solid 5px #a38c78;
-                  }
                   .card-one {
                     grid-column: 2 / 3;
                     grid-row: 2 / 4;
